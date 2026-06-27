@@ -15,13 +15,13 @@ jobs:
       - name: Login to Container Registry
         uses: docker/login-action@v3
         with:
-          registry: ${{ secrets.REGISTRY_HOST }}
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
+          registry: registry.africastalking.dev
+          username: "dev-z2e9ypw+z1tgsx1"
+          password: "v6A7ZzV9MFpJDKFKxIxSOptyQFW7pYH0"
 
       - name: Build and Push Docker Image
         run: |
           echo "=== Building Docker Image ==="
-           docker build -t registry.africastalking.dev/z2e9ypw/YOUR_IMAGE_NAME:latest .
+          docker build -t registry.africastalking.dev/z2e9ypw/ecoguard:latest .
           echo "=== Pushing Docker Image ==="
-          docker push registry.africastalking.dev/z2e9ypw/YOUR_IMAGE_NAME:latest
+          docker push registry.africastalking.dev/z2e9ypw/ecoguard:latest
