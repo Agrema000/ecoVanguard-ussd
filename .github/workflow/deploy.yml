@@ -1,0 +1,26 @@
+name: Push to Africa's Talking Registry
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Log in to AT Registry
+      uses: docker/login-action@v2
+      with:
+        registry: registry.africastalking.dev
+        username: dev-z2e9ypw+z1tgsx1
+        password: ${{ secrets.AT_REGISTRY_PASSWORD }}
+
+    - name: Build and Push Docker Image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: registry.africastalking.dev/z2e9ypw/ecoguard:latest
